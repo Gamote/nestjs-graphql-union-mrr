@@ -1,0 +1,22 @@
+diff --git a/node_modules/@apollo/subgraph/dist/printSubgraphSchema.js b/node_modules/@apollo/subgraph/dist/printSubgraphSchema.js
+index d251688..725bcfb 100644
+--- a/node_modules/@apollo/subgraph/dist/printSubgraphSchema.js
++++ b/node_modules/@apollo/subgraph/dist/printSubgraphSchema.js
+@@ -102,7 +102,7 @@ function printImplementedInterfaces(type) {
+         : '';
+ }
+ function printObject(type) {
+-    const isExtension = type.extensionASTNodes && type.astNode && !type.astNode.fields;
++    const isExtension = (type.extensionASTNodes && type.extensionASTNodes.length > 0) && type.astNode && !type.astNode.fields;
+     return (printDescription(type) +
+         (isExtension ? 'extend ' : '') +
+         `type ${type.name}` +
+@@ -111,7 +111,7 @@ function printObject(type) {
+         printFields(type));
+ }
+ function printInterface(type) {
+-    const isExtension = type.extensionASTNodes && type.astNode && !type.astNode.fields;
++    const isExtension = (type.extensionASTNodes && type.extensionASTNodes.length > 0) && type.astNode && !type.astNode.fields;
+     return (printDescription(type) +
+         (isExtension ? 'extend ' : '') +
+         `interface ${type.name}` +
